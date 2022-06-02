@@ -1,3 +1,4 @@
+import argparse
 import logging
 import numpy as np
 import pandas as pd
@@ -11,23 +12,35 @@ from src.data import VeridicalDataset
 from src.herbert_classfier import HerBERTClassifier
 from src.utils import plot_feature_importance, summarize_model_per_factive
 
+parser = argparse.ArgumentParser(description='Random Forest')
+parser.add_argument('--model_path', type=str)
+parser.add_argument('--data_path', type=str)
+parser.add_argument('--text_col', type=str)
+parser.add_argument('--logging_path', type=str)
+args = parser.parse_args()
+
 
 Y_COL = 'GOLD <T,H>'
-TEXT_COL=  'verb' # 'T PL' #
+TEXT_COL= text_col  # 'verb' # 'T PL' #
 N_SPLITS = 10
 BATCH_SIZE = 32
 N_EPOCHS = 10 # 13
 LR = 1e-5
 
-DIR_PROJECT = Path(".").resolve()
-MODEL_DIR = DIR_PROJECT.joinpath("models")
-DIR_DATA = DIR_PROJECT.joinpath("data/17_10_2021")
+# DIR_PROJECT = Path(".").resolve()
+# MODEL_DIR = DIR_PROJECT.joinpath("models")
+# DIR_DATA = DIR_PROJECT.joinpath("data/17_10_2021")
+
+MODEL_DIR = Path(args.model_path)
+DIR_DATA = Path(args.data_path)
+LOGGING_DIR = Path(args.logging_path)
 
 logging.basicConfig(
-    level=logging.INFO, filename=DIR_PROJECT.joinpath(f'log/herbert_{TEXT_COL}_cv.log')
+    level=logging.INFO, filename=LOGGING_DIR.joinpath(f'herbert_{TEXT_COL}_cv.log')
 )
 
 logging.info(f"\n\nDATE: {datetime.today().strftime('%Y-%m-%d-%H:%M:%S')}")
+logging.info(f"Arguments: {args}")
 
 train_ = pd.read_csv(DIR_DATA.joinpath("df.csv"))
 #train = train.loc[:, [Y_COL, TEXT_COL]]

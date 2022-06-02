@@ -1,3 +1,4 @@
+import argparse
 import joblib
 import logging
 import pandas as pd
@@ -15,6 +16,11 @@ from datetime import datetime
 from src.data import VeridicalDataset
 from src.utils import plot_feature_importance, summarize_model_per_factive
 
+# parser = argparse.ArgumentParser(description='Random Forest')
+# parser.add_argument('--model_path', type=str)
+# parser.add_argument('--data_path', type=str)
+# parser.add_argument('--logging_path', type=str)
+# args = parser.parse_args()
 
 Y_COL = 'GOLD <T,H>'
 N_ESTIMATORS = 100
@@ -22,11 +28,17 @@ N_SPLITS = 10
 MAX_DEPTH = 20
 
 DIR_PROJECT = Path(".").resolve()
-MODEL_DIR = DIR_PROJECT.joinpath("models")
-DIR_DATA = DIR_PROJECT.joinpath("data/17_10_2021")
+MODEL_DIR = DIR_PROJECT.joinpath("models/extended_data")
+DIR_DATA = DIR_PROJECT.joinpath("data/29_05_2022_extended")
+LOGGING_DIR = DIR_PROJECT.joinpath("log/extended_data")
 
-logging.basicConfig(level=logging.INFO, filename=DIR_PROJECT.joinpath('log/rf_cv.log'))
+# MODEL_DIR = Path(args.model_path)
+# DIR_DATA = Path(args.data_path)
+# LOGGING_DIR = Path(args.logging_path)
+
+logging.basicConfig(level=logging.INFO, filename=LOGGING_DIR.joinpath('rf_cv.log'))
 logging.info(f"\n\nDATE: {datetime.today().strftime('%Y-%m-%d-%H:%M:%S')}")
+#logging.info(f"Arguments: {args}")
 
 train = pd.read_csv(DIR_DATA.joinpath("df.csv"))
 train = train.drop(['T PL', 'H PL', 'verb'], axis=1)
@@ -40,8 +52,8 @@ skf = StratifiedKFold(n_splits=N_SPLITS, random_state=123, shuffle=True)
 logging.info(f"\n\nN splits: {N_SPLITS}, N estimators: {N_ESTIMATORS}, max depth: {MAX_DEPTH}")
 X, y = X_train_, train[Y_COL]
 for i, (train_index, test_index) in enumerate(skf.split(X, y)):
+    print(i)
     X_train, X_test = X.loc[train_index], X.loc[test_index]
-    y_train, y_test = y.loc[train_index], y.loc[test_index]
     classifier = RandomForestClassifier(random_state=123, n_estimators=N_ESTIMATORS, max_depth=MAX_DEPTH, class_weight={'C': 2, 'E': 1, 'N': 1}) #, class_weight={'C': 2, 'E': 1, 'N': 1})#
     classifier.fit(X_train, y_train)
     y_test_pred = classifier.predict(X_test)
