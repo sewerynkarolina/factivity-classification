@@ -21,7 +21,7 @@ args = parser.parse_args()
 
 
 Y_COL = 'GOLD <T,H>'
-TEXT_COL= text_col  # 'verb' # 'T PL' #
+TEXT_COL= args.text_col  # 'verb' # 'T PL' #
 N_SPLITS = 10
 BATCH_SIZE = 32
 N_EPOCHS = 10 # 13

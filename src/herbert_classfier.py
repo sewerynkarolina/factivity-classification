@@ -17,12 +17,12 @@ from datetime import datetime
 
 class HerBERTClassifier():
 
-    def __init__(self, num_labels, id2label=None, label2id=None):
-        
+    def __init__(self, num_labels, id2label=None, label2id=None, model_name="allegro/herbert-klej-cased-v1"):
+        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.model = AutoModelForSequenceClassification.from_pretrained(
-            "allegro/herbert-klej-cased-v1",
+            model_name,
             num_labels=num_labels
-        )
+        ).to(device)
         self.num_labels = num_labels
         if id2label is not None:
             self.model.config.id2label = id2label

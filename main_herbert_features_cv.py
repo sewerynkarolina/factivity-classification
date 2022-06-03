@@ -1,3 +1,4 @@
+import argparse
 import logging
 import pandas as pd
 import numpy as np
@@ -15,19 +16,30 @@ from src.herbert_classfier import HerBERTClassifier
 from src.utils import summarize_model_per_factive
 
 
+parser = argparse.ArgumentParser(description='Random Forest')
+parser.add_argument('--model_path', type=str)
+parser.add_argument('--data_path', type=str)
+parser.add_argument('--text_col', type=str)
+parser.add_argument('--logging_path', type=str)
+args = parser.parse_args()
+
 BATCH_SIZE = 32
 LR = 1e-5
 Y_COL = 'GOLD <T,H>'
-TEXT_COL= 'T PL' # 'verb' #
-N_EPOCHS = 13 # 10 #
+TEXT_COL= args.text_col  # TEXT_COL= 'T PL' # 'verb' #
+N_EPOCHS = 10 # 13 # 10 #
 N_SPLITS = 10 
 
 
-DIR_PROJECT = Path(".").resolve()
-DIR_DATA = DIR_PROJECT.joinpath("data/17_10_2021")
-MODEL_DIR = DIR_PROJECT.joinpath("models")
+# DIR_PROJECT = Path(".").resolve()
+# DIR_DATA = DIR_PROJECT.joinpath("data/17_10_2021")
+# MODEL_DIR = DIR_PROJECT.joinpath("models")
 
-logging.basicConfig(level=logging.INFO, filename=DIR_PROJECT.joinpath(f'log/herbert_feat_{TEXT_COL}_cv.log'))
+MODEL_DIR = Path(args.model_path).resolve()
+DIR_DATA = Path(args.data_path)
+LOGGING_DIR = Path(args.logging_path)
+
+logging.basicConfig(level=logging.INFO, filename=LOGGING_DIR.joinpath(f'herbert_feat_{TEXT_COL}_cv.log'))
 logging.info(f"\n\nDATE: {datetime.today().strftime('%Y-%m-%d-%H:%M:%S')}")
 
 def transform_prediction(dataloader, model):
@@ -49,7 +61,8 @@ for i, (train_index, test_index) in enumerate(skf.split(X, y)):
     y_train, y_test = y.loc[train_index], y.loc[test_index]
 
     MODEL = MODEL_DIR.joinpath(f"cv_herbert_{i}_{N_EPOCHS}_{LR}_{BATCH_SIZE}_{TEXT_COL}")
-    model = torch.load(MODEL)
+    #model = torch.load(MODEL)
+    model = HerBERTClassifier(num_labels=3, model_name=MODEL)
 
     train = [{'text': X_train.loc[i, TEXT_COL], 'label': y_train.loc[i]} for i in train_index]
     test = [{'text': X_test.loc[i, TEXT_COL], 'label': y_test.loc[i]} for i in test_index]

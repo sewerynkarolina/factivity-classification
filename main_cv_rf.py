@@ -54,6 +54,7 @@ X, y = X_train_, train[Y_COL]
 for i, (train_index, test_index) in enumerate(skf.split(X, y)):
     print(i)
     X_train, X_test = X.loc[train_index], X.loc[test_index]
+    y_train, y_test = y.loc[train_index], y.loc[test_index]
     classifier = RandomForestClassifier(random_state=123, n_estimators=N_ESTIMATORS, max_depth=MAX_DEPTH, class_weight={'C': 2, 'E': 1, 'N': 1}) #, class_weight={'C': 2, 'E': 1, 'N': 1})#
     classifier.fit(X_train, y_train)
     y_test_pred = classifier.predict(X_test)
