@@ -1,0 +1,211 @@
+INFO:root:
+
+DATE: 2022-06-03-07:30:11
+INFO:root:
+N splits: 10, batch size: 32, n_epochs: 10, lr: 1e-05
+INFO:root:
+
+DATE: 2022-06-03-07:31:52
+INFO:root:
+N splits: 10, batch size: 32, n_epochs: 10, lr: 1e-05
+INFO:root:
+
+DATE: 2022-06-03-07:37:34
+INFO:root:
+N splits: 10, batch size: 32, n_epochs: 10, lr: 1e-05
+INFO:root:
+
+DATE: 2022-06-03-07:37:49
+INFO:root:
+N splits: 10, batch size: 32, n_epochs: 10, lr: 1e-05
+INFO:root:
+
+DATE: 2022-06-03-08:22:11
+INFO:root:
+N splits: 10, batch size: 32, n_epochs: 10, lr: 1e-05
+INFO:root:Run: 1
+INFO:root:              precision    recall  f1-score   support
+
+           C       0.86      0.38      0.52        16
+           E       0.90      0.89      0.89       125
+           N       0.87      0.93      0.90       163
+
+    accuracy                           0.88       304
+   macro avg       0.88      0.73      0.77       304
+weighted avg       0.88      0.88      0.88       304
+
+INFO:root:                      n  sum_correct       acc
+y_true factive_ind                            
+C      False         16            6  0.375000
+E      False         23            9  0.391304
+       True         102          102  1.000000
+N      False        161          150  0.931677
+       True           2            1  0.500000
+INFO:root:Run: 2
+INFO:root:              precision    recall  f1-score   support
+
+           C       0.83      0.31      0.45        16
+           E       0.90      0.88      0.89       125
+           N       0.88      0.94      0.91       163
+
+    accuracy                           0.88       304
+   macro avg       0.87      0.71      0.75       304
+weighted avg       0.88      0.88      0.88       304
+
+INFO:root:                      n  sum_correct       acc
+y_true factive_ind                            
+C      False         16            5  0.312500
+E      False         24            9  0.375000
+       True         101          101  1.000000
+N      False        161          154  0.956522
+       True           2            0  0.000000
+INFO:root:Run: 3
+INFO:root:              precision    recall  f1-score   support
+
+           C       0.62      0.31      0.42        16
+           E       0.89      0.93      0.91       125
+           N       0.90      0.91      0.91       163
+
+    accuracy                           0.89       304
+   macro avg       0.80      0.72      0.74       304
+weighted avg       0.88      0.89      0.88       304
+
+INFO:root:                      n  sum_correct       acc
+y_true factive_ind                            
+C      False         16            5  0.312500
+E      False         22           13  0.590909
+       True         103          103  1.000000
+N      False        160          149  0.931250
+       True           3            0  0.000000
+INFO:root:Run: 4
+INFO:root:              precision    recall  f1-score   support
+
+           C       1.00      0.24      0.38        17
+           E       0.92      0.88      0.90       124
+           N       0.86      0.95      0.90       163
+
+    accuracy                           0.88       304
+   macro avg       0.92      0.69      0.73       304
+weighted avg       0.89      0.88      0.87       304
+
+INFO:root:                      n  sum_correct       acc
+y_true factive_ind                            
+C      False         17            4  0.235294
+E      False         28           13  0.464286
+       True          96           96  1.000000
+N      False        163          155  0.950920
+INFO:root:Run: 5
+INFO:root:              precision    recall  f1-score   support
+
+           C       0.88      0.41      0.56        17
+           E       0.94      0.81      0.87       124
+           N       0.83      0.96      0.89       163
+
+    accuracy                           0.87       304
+   macro avg       0.88      0.73      0.77       304
+weighted avg       0.88      0.87      0.86       304
+
+INFO:root:                      n  sum_correct       acc
+y_true factive_ind                            
+C      False         17            7  0.411765
+E      False         33            9  0.272727
+       True          91           91  1.000000
+N      False        163          157  0.963190
+INFO:root:Run: 6
+INFO:root:              precision    recall  f1-score   support
+
+           C       0.67      0.12      0.21        16
+           E       0.90      0.84      0.87       125
+           N       0.85      0.96      0.90       162
+
+    accuracy                           0.86       303
+   macro avg       0.80      0.64      0.66       303
+weighted avg       0.86      0.86      0.85       303
+
+INFO:root:                      n  sum_correct       acc
+y_true factive_ind                            
+C      False         16            2  0.125000
+E      False         33           13  0.393939
+       True          92           92  1.000000
+N      False        161          155  0.962733
+       True           1            0  0.000000
+INFO:root:Run: 7
+INFO:root:              precision    recall  f1-score   support
+
+           C       0.61      0.69      0.65        16
+           E       0.89      0.86      0.87       125
+           N       0.88      0.90      0.89       162
+
+    accuracy                           0.87       303
+   macro avg       0.80      0.81      0.80       303
+weighted avg       0.87      0.87      0.87       303
+
+INFO:root:                      n  sum_correct      acc
+y_true factive_ind                           
+C      False         16           11  0.68750
+E      False         29           11  0.37931
+       True          96           96  1.00000
+N      False        160          146  0.91250
+       True           2            0  0.00000
+INFO:root:Run: 8
+INFO:root:              precision    recall  f1-score   support
+
+           C       0.83      0.31      0.45        16
+           E       0.92      0.88      0.90       125
+           N       0.87      0.96      0.91       162
+
+    accuracy                           0.89       303
+   macro avg       0.88      0.72      0.76       303
+weighted avg       0.89      0.89      0.88       303
+
+INFO:root:                      n  sum_correct       acc
+y_true factive_ind                            
+C      False         16            5  0.312500
+E      False         19            4  0.210526
+       True         106          106  1.000000
+N      False        160          155  0.968750
+       True           2            0  0.000000
+INFO:root:Run: 9
+INFO:root:              precision    recall  f1-score   support
+
+           C       0.80      0.50      0.62        16
+           E       0.87      0.86      0.86       125
+           N       0.86      0.91      0.89       162
+
+    accuracy                           0.86       303
+   macro avg       0.84      0.75      0.79       303
+weighted avg       0.86      0.86      0.86       303
+
+INFO:root:                      n  sum_correct       acc
+y_true factive_ind                            
+C      False         16            8  0.500000
+E      False         25            7  0.280000
+       True         100          100  1.000000
+N      False        162          147  0.907407
+INFO:root:Run: 10
+INFO:root:              precision    recall  f1-score   support
+
+           C       0.67      0.12      0.21        16
+           E       0.93      0.86      0.89       125
+           N       0.84      0.96      0.90       162
+
+    accuracy                           0.87       303
+   macro avg       0.81      0.65      0.67       303
+weighted avg       0.87      0.87      0.86       303
+
+INFO:root:                      n  sum_correct       acc
+y_true factive_ind                            
+C      False         16            2  0.125000
+E      False         26            8  0.307692
+       True          99           99  1.000000
+N      False        161          156  0.968944
+       True           1            0  0.000000
+INFO:root:
+SUMMARY
+INFO:root:[0.881578947368421, 0.8848684210526315, 0.8881578947368421, 0.881578947368421, 0.868421052631579, 0.8646864686468647, 0.8712871287128713, 0.8910891089108911, 0.8646864686468647, 0.8745874587458746]
+INFO:root:[0.8759854000014441, 0.8773130096764055, 0.8817084871095421, 0.8704227753744108, 0.86295259333208, 0.8495205043699711, 0.8719378386289568, 0.8834439856714696, 0.8619369254035032, 0.8596920684788029]
+INFO:root:Accuracy: 0.8770941896821262 +- 0.009176383580320904
+INFO:root:F1 score: 0.8694913588046586 +- 0.010241209156854296
+INFO:root:F1 score C: 0.44719451576377134 +- 0.14281713634374765
+INFO:root:F1 score E: 0.8852636302656481 +- 0.01466596931934667
+INFO:root:F1 score N: 0.8994541292479052 +- 0.008096075216992201
